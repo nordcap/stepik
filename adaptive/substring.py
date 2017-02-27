@@ -22,14 +22,20 @@ d
 Sample Output 3:
 -1
 """
-import re
 
 str = input()
 substr = input()
-n = str.count(substr)
+lst_pos = []
 
-for m in re.finditer(substr, str):
-    print(m.start(), end=" ")
+for i in range(len(str)):
+    pos = str.find(substr, i)
+    if pos == -1:
+        break
+    if not pos in lst_pos:
+        lst_pos.append(pos)
 
-if n == 0:
+if len(lst_pos) > 0:
+    for i in lst_pos:
+        print(i, end=" ")
+else:
     print(-1)
