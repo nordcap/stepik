@@ -27,16 +27,39 @@ from_tower = [i for i in range(1, n + 1)]
 to_tower = []
 buf = []
 
+d = {'1': from_tower,
+     '2': buf,
+     '3': to_tower
+     }
+
+hist = []
+
 
 def hanoi(n, from_tower, buf, to_tower):
+    global hist
     if n > 0:
         hanoi(n - 1, from_tower, to_tower, buf)
         if from_tower:
             to_tower.append(from_tower.pop())
+            a, b = '', ''
+            for num_tower in d:
+                if d[num_tower] == from_tower:
+                    a = num_tower
+                if d[num_tower] == to_tower:
+                    b = num_tower
+                if len(a) > 0 and len(b) > 0:
+                    # print("from_tower=", from_tower, "to_tower", to_tower, end=" - ")
+                    # print("a=", a, "b=", b)
+                    print(d)
+                    hist.append((a, b))
+
         hanoi(n - 1, buf, from_tower, to_tower)
 
 
-hanoi(n, from_tower, buf, to_tower)
-print('from_tower=', from_tower)
-print('buf=', buf)
-print('to_tower=', to_tower)
+
+hanoi(n, d["1"], d["2"], d["3"])
+print(hist)
+
+print('from_tower=', d["1"])
+print('buf=', d["2"])
+print('to_tower=', d["3"])
