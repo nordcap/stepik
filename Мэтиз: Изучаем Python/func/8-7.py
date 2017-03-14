@@ -5,16 +5,27 @@
 для создания трех словарей, представляющих разные альбомы. Выведите все возвраща-
 емые значения, чтобы показать, что информация правильно сохраняется во всех трех
 словарях.
+Добавьте в make_album() дополнительный параметр для сохранения количества дорожек
+в альбоме. Если в строку вызова включено значение количества дорожек, добавьте это зна-
+чение в словарь альбома. Создайте как минимум один новый вызов функции с передачей
+количества дорожек в альбоме.
 """
 
 
-def make_album(name, album):
-    return {"name_singer": name, "name_album": album}
+def make_album(name, album, count=''):
+    album_dict = {}
+    if count:
+        album_dict["count"] = count
+    album_dict["name_singer"] = name
+    album_dict["name_album"] = album
+    return album_dict
 
 
 album1 = make_album("Ария", "Кровь за кровь")
 album2 = make_album("Аквариум", "Соль")
 album3 = make_album("Король и Шут", "Театр демона")
+album4 = make_album("Калинов мост", "Травень", 4)
 print(album1)
 print(album2)
 print(album3)
+print(album4)
