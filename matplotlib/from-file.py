@@ -10,10 +10,10 @@ with open('example.txt', 'r') as f:
         x.append(plots[0])
         y.append(plots[1])
 
-plt.plot(x, y, label='load from file')
+plt.plot(x, y, label='load from file_exception', color='r')
 plt.xlabel('X')
 plt.ylabel('Y')
-plt.title('import data from file')
+plt.title('import data from file_exception')
 plt.legend()
 
 plt.show()
