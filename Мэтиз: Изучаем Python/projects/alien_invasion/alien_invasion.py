@@ -17,6 +17,7 @@ def run_game():
     while True:
         # Отслеживание событий клавиатуры и мыши.
         gf.check_events(ship)
+        ship.update()
         gf.update_screen(ai_settings, screen, ship)
 
 
