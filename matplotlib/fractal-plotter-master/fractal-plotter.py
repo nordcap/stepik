@@ -169,7 +169,7 @@ def parse_angles():
 
 def load_presets():
     '''
-    Loads JSON file with presets.
+    Loads JSON file_exception with presets.
     '''
     global presets
     if not os.path.isfile(PRESETS):
@@ -180,7 +180,7 @@ def load_presets():
                 presets = json.load(presets_file)
             except json.decoder.JSONDecodeError:
                 presets = {}
-                print(gettext('Invalid presets file.'))
+                print(gettext('Invalid presets file_exception.'))
                 presets_frame.state(['disabled'])
                 presets_list.state(['disabled'])
                 add_preset_button.state(['disabled'])
@@ -192,7 +192,7 @@ def load_presets():
 
 def apply_preset(event):
     '''
-    Apply data from presets file to variables.
+    Apply data from presets file_exception to variables.
     '''
     global bg_color, fg_color
     angles_input.delete(0, 'end')
@@ -211,7 +211,7 @@ def apply_preset(event):
 
 def add_preset():
     '''
-    Write new preset to JSON file.
+    Write new preset to JSON file_exception.
     '''
     current_preset = askstring(
         gettext('Preset name'),
@@ -242,7 +242,7 @@ def add_preset():
 
 def del_preset():
     '''
-    Remove preset from JSON file.
+    Remove preset from JSON file_exception.
     '''
     current_preset = presets_list.get()
     if current_preset in presets.keys()\
@@ -258,12 +258,12 @@ def del_preset():
 
 def export_image():
     '''
-    Function asks name for image and try to export canvas to file.
+    Function asks name for image and try to export canvas to file_exception.
     '''
     file = asksaveasfilename(
         parent=root,
         filetypes=(
-            (gettext('Image'), '*.png'), (gettext('Postscript file'), '*.ps')
+            (gettext('Image'), '*.png'), (gettext('Postscript file_exception'), '*.ps')
         ),
         title=gettext('Export image as..')
     )
