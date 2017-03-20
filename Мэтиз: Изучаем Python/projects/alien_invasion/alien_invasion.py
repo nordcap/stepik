@@ -21,16 +21,13 @@ def run_game():
     # Создание флота пришельцев.
     gf.create_fleet(ai_settings, screen, ship, aliens)
 
-    # Создание пришельца.
-    #alien = Alien(ai_settings, screen)
-
     # Запуск основного цикла игры.
     while True:
         # Отслеживание событий клавиатуры и мыши.
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
         gf.update_bullets(bullets)
-        gf.update_aliens(aliens)
+        gf.update_aliens(ai_settings, aliens)
         gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 
 
