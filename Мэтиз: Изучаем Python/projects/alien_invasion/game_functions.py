@@ -66,7 +66,7 @@ def check_keyup_events(event, ship):
         ship.moving_left = False
 
 
-def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
+def update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button):
     """Обновляет изображения на экране и отображает новый экран."""
     # При каждом проходе цикла перерисовывается экран.
     screen.fill(ai_settings.bg_color)
@@ -77,6 +77,9 @@ def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button
     ship.blitme()  # отрисовка корабля
     aliens.draw(screen)  # отрисовка чужих
 
+    # Вывод счета.
+    sb.show_score()
+
     # Кнопка Play отображается в том случае, если игра неактивна.
     if not stats.game_active:
         play_button.draw_button()
@@ -85,7 +88,7 @@ def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button
     pygame.display.flip()
 
 
-def update_bullets(ai_settings, screen, ship, aliens, bullets):
+def update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets):
     """Обновляет позиции пуль и уничтожает старые пули."""
     # Обновление позиций пуль.
     bullets.update()
@@ -93,13 +96,17 @@ def update_bullets(ai_settings, screen, ship, aliens, bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-        check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets)
+        check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, bullets)
 
 
-def check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets):
+def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, bullets):
     """Обработка коллизий пуль с пришельцами."""
     # При обнаружении попадания удалить пулю и пришельца.
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+    if collisions:
+        stats.score += ai_settings.alien_points
+        sb.prep_score()
+
     if len(aliens) == 0:
         # Уничтожение пуль, повышение скорости и создание нового флота.
         bullets.empty()
