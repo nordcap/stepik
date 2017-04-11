@@ -1,0 +1,33 @@
+"""Примеры решения задачи на нескольких языках программирования"""
+#Python 3
+import sys
+a, b = sys.stdin.read().split()
+print(int(a) + int(b))
+#C++
+
+#include <iostream>
+
+int main(){
+    int a = 0;
+    int b = 0;
+    int sum = 0;
+    std::cin >> a;
+    std::cin >> b;
+    sum = a + b;
+    std::cout << sum;
+    return 0;
+}
+
+
+# Java
+
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    Scanner s = new Scanner(System.in);
+    int a = s.nextInt();
+    int b = s.nextInt();
+    System.out.println(a + b);
+  }
+}
