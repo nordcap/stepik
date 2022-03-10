@@ -6,13 +6,12 @@
 
 # объявление функции
 def print_digit_sum(num):
-    s = str(num)
-    arr = [int(i) for i in [*s]]
+    arr = [int(i) for i in [*num]]
     print(sum(arr))
 
 
 # считываем данные
-n = int(input())
+n = input()
 
 # вызываем функцию
 print_digit_sum(n)
