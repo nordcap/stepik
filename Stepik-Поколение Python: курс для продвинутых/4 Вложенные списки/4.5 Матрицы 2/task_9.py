@@ -26,7 +26,7 @@ def sled_two(matrix, n):
 
 n = int(input())
 seq = [i for i in range(1, n ** 2 + 1)]
-flag = True
+#flag = True
 
 matrix = []
 temp_list = []  # врем. список для хранения всех чисел матрицы
