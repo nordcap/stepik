@@ -1,0 +1,5 @@
+Washington 83
+Adams 86
+Kingsman 100
+MacDonald 95
+Thomson 98
